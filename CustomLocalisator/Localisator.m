@@ -11,7 +11,6 @@
 
 @interface Localisator()
 
-@property NSString * currentLanguage;
 @property NSDictionary * dicoLocalisation;
 
 @end
@@ -68,6 +67,7 @@
         return retour;
     }
 }
+
 
 -(void)setLanguage:(NSString *)newLanguage
 {

@@ -12,8 +12,11 @@
 @interface TestViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
-@property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UITableView *tableViewLanguages;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewFlag;
+
+
 
 @property NSArray * arrayOfLangugages;
 
@@ -51,14 +54,10 @@
     [self.label1 setText:[[Localisator sharedInstance] localizedStringForKey:@"StringLabel1"]];
     [self.label2 setText:[[Localisator sharedInstance] localizedStringForKey:@"StringLabel2"]];
     
-    
-    // disable the flash when changing the button title
-    [UIView performWithoutAnimation:^{
-        
-        [self.button setTitle:[[Localisator sharedInstance] localizedStringForKey:@"StringButton"] forState:UIControlStateNormal];
-    }];
-    
     [self.tableViewLanguages reloadData];
+
+    [self.imageViewFlag setImage:[UIImage imageNamed:[[Localisator sharedInstance] currentLanguage]]];
+
 }
 #pragma mark - Notification methods
 
@@ -86,10 +85,11 @@
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"] ;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyIdentifier"] ;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
+    cell.imageView.image = [UIImage imageNamed:self.arrayOfLangugages[indexPath.row]];
     cell.textLabel.text = [[Localisator sharedInstance] localizedStringForKey:self.arrayOfLangugages[indexPath.row]];
     
     /* Now that the cell is configured we return it to the table view so that it can display it */

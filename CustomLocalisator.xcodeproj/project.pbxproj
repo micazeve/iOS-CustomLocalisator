@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83C2ABE718CDB424000114B5 /* DeviceLanguage.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2ABE418CDB424000114B5 /* DeviceLanguage.png */; };
+		83C2ABE818CDB424000114B5 /* English.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2ABE518CDB424000114B5 /* English.png */; };
+		83C2ABE918CDB424000114B5 /* French.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2ABE618CDB424000114B5 /* French.png */; };
 		83D5888418C8727800CABB93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5888318C8727800CABB93 /* Foundation.framework */; };
 		83D5888618C8727800CABB93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5888518C8727800CABB93 /* CoreGraphics.framework */; };
 		83D5888818C8727800CABB93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5888718C8727800CABB93 /* UIKit.framework */; };
@@ -33,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83C2ABE418CDB424000114B5 /* DeviceLanguage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeviceLanguage.png; sourceTree = "<group>"; };
+		83C2ABE518CDB424000114B5 /* English.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = English.png; sourceTree = "<group>"; };
+		83C2ABE618CDB424000114B5 /* French.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = French.png; sourceTree = "<group>"; };
 		83D5888018C8727800CABB93 /* CustomLocalisator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomLocalisator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5888318C8727800CABB93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		83D5888518C8727800CABB93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83C2ABDC18CDB0AF000114B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83C2ABDD18CDB0BD000114B5 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		83C2ABDD18CDB0BD000114B5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				83C2ABE418CDB424000114B5 /* DeviceLanguage.png */,
+				83C2ABE518CDB424000114B5 /* English.png */,
+				83C2ABE618CDB424000114B5 /* French.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		83D5887718C8727800CABB93 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +144,7 @@
 				83D588C118C8773C00CABB93 /* TestViewController.h */,
 				83D588C218C8773C00CABB93 /* TestViewController.m */,
 				83D588D518C8AFD500CABB93 /* Localizable.strings */,
+				83C2ABDC18CDB0AF000114B5 /* Resources */,
 				83D5888A18C8727800CABB93 /* Supporting Files */,
 			);
 			path = CustomLocalisator;
@@ -230,8 +255,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C2ABE818CDB424000114B5 /* English.png in Resources */,
 				83D588D918C8AFE700CABB93 /* Localizable.strings in Resources */,
+				83C2ABE718CDB424000114B5 /* DeviceLanguage.png in Resources */,
 				83D588C318C8773C00CABB93 /* TestView.xib in Resources */,
+				83C2ABE918CDB424000114B5 /* French.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
