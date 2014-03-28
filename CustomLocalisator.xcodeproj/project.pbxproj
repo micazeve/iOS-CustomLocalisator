@@ -19,10 +19,14 @@
 		83D588A418C8727900CABB93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5888318C8727800CABB93 /* Foundation.framework */; };
 		83D588A518C8727900CABB93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5888718C8727800CABB93 /* UIKit.framework */; };
 		83D588AF18C8727900CABB93 /* CustomLocalisatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D588AE18C8727900CABB93 /* CustomLocalisatorTests.m */; };
-		83D588C318C8773C00CABB93 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D588C018C8773C00CABB93 /* TestView.xib */; };
-		83D588C418C8773C00CABB93 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D588C218C8773C00CABB93 /* TestViewController.m */; };
+		83D588C318C8773C00CABB93 /* LocalisatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D588C018C8773C00CABB93 /* LocalisatorView.xib */; };
+		83D588C418C8773C00CABB93 /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D588C218C8773C00CABB93 /* LocalisatorViewController.m */; };
 		83D588D918C8AFE700CABB93 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D588D518C8AFD500CABB93 /* Localizable.strings */; };
 		83D588DC18C8B18E00CABB93 /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D588DB18C8B18E00CABB93 /* Localisator.m */; };
+		83E79ADC18CDB6610052A14C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E79ADA18CDB6610052A14C /* Default-568h@2x.png */; };
+		83E79ADD18CDB6610052A14C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E79ADB18CDB6610052A14C /* Default@2x.png */; };
+		83F7A39F18E46966005E4F43 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F7A39E18E46966005E4F43 /* HomeView.xib */; };
+		83F7A3A218E469D7005E4F43 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F7A3A118E469D7005E4F43 /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +56,18 @@
 		83D588A218C8727900CABB93 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		83D588AA18C8727900CABB93 /* CustomLocalisatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CustomLocalisatorTests-Info.plist"; sourceTree = "<group>"; };
 		83D588AE18C8727900CABB93 /* CustomLocalisatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLocalisatorTests.m; sourceTree = "<group>"; };
-		83D588C018C8773C00CABB93 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
-		83D588C118C8773C00CABB93 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		83D588C218C8773C00CABB93 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		83D588C018C8773C00CABB93 /* LocalisatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalisatorView.xib; sourceTree = "<group>"; };
+		83D588C118C8773C00CABB93 /* LocalisatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalisatorViewController.h; sourceTree = "<group>"; };
+		83D588C218C8773C00CABB93 /* LocalisatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalisatorViewController.m; sourceTree = "<group>"; };
 		83D588D618C8AFD500CABB93 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
 		83D588D818C8AFDB00CABB93 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		83D588DA18C8B18E00CABB93 /* Localisator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localisator.h; sourceTree = "<group>"; };
 		83D588DB18C8B18E00CABB93 /* Localisator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Localisator.m; sourceTree = "<group>"; };
+		83E79ADA18CDB6610052A14C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		83E79ADB18CDB6610052A14C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		83F7A39E18E46966005E4F43 /* HomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
+		83F7A3A018E469D7005E4F43 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		83F7A3A118E469D7005E4F43 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +97,7 @@
 		83C2ABDC18CDB0AF000114B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83F7A3A318E47B89005E4F43 /* Interface */,
 				83C2ABDD18CDB0BD000114B5 /* Images */,
 			);
 			name = Resources;
@@ -96,6 +106,8 @@
 		83C2ABDD18CDB0BD000114B5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				83E79ADA18CDB6610052A14C /* Default-568h@2x.png */,
+				83E79ADB18CDB6610052A14C /* Default@2x.png */,
 				83C2ABE418CDB424000114B5 /* DeviceLanguage.png */,
 				83C2ABE518CDB424000114B5 /* English.png */,
 				83C2ABE618CDB424000114B5 /* French.png */,
@@ -140,9 +152,10 @@
 				83D588DB18C8B18E00CABB93 /* Localisator.m */,
 				83D5889218C8727800CABB93 /* AppDelegate.h */,
 				83D5889318C8727800CABB93 /* AppDelegate.m */,
-				83D588C018C8773C00CABB93 /* TestView.xib */,
-				83D588C118C8773C00CABB93 /* TestViewController.h */,
-				83D588C218C8773C00CABB93 /* TestViewController.m */,
+				83F7A3A018E469D7005E4F43 /* HomeViewController.h */,
+				83F7A3A118E469D7005E4F43 /* HomeViewController.m */,
+				83D588C118C8773C00CABB93 /* LocalisatorViewController.h */,
+				83D588C218C8773C00CABB93 /* LocalisatorViewController.m */,
 				83D588D518C8AFD500CABB93 /* Localizable.strings */,
 				83C2ABDC18CDB0AF000114B5 /* Resources */,
 				83D5888A18C8727800CABB93 /* Supporting Files */,
@@ -175,6 +188,15 @@
 				83D588AA18C8727900CABB93 /* CustomLocalisatorTests-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83F7A3A318E47B89005E4F43 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				83F7A39E18E46966005E4F43 /* HomeView.xib */,
+				83D588C018C8773C00CABB93 /* LocalisatorView.xib */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +243,7 @@
 		83D5887818C8727800CABB93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					83D588A018C8727900CABB93 = {
 						TestTargetID = 83D5887F18C8727800CABB93;
@@ -256,10 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				83C2ABE818CDB424000114B5 /* English.png in Resources */,
+				83F7A39F18E46966005E4F43 /* HomeView.xib in Resources */,
 				83D588D918C8AFE700CABB93 /* Localizable.strings in Resources */,
 				83C2ABE718CDB424000114B5 /* DeviceLanguage.png in Resources */,
-				83D588C318C8773C00CABB93 /* TestView.xib in Resources */,
+				83D588C318C8773C00CABB93 /* LocalisatorView.xib in Resources */,
 				83C2ABE918CDB424000114B5 /* French.png in Resources */,
+				83E79ADD18CDB6610052A14C /* Default@2x.png in Resources */,
+				83E79ADC18CDB6610052A14C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,9 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83D588C418C8773C00CABB93 /* TestViewController.m in Sources */,
+				83D588C418C8773C00CABB93 /* LocalisatorViewController.m in Sources */,
 				83D588DC18C8B18E00CABB93 /* Localisator.m in Sources */,
 				83D5889418C8727800CABB93 /* AppDelegate.m in Sources */,
+				83F7A3A218E469D7005E4F43 /* HomeViewController.m in Sources */,
 				83D5889018C8727800CABB93 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,7 +345,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -358,7 +383,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -390,8 +414,6 @@
 		83D588B318C8727900CABB93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CustomLocalisator/CustomLocalisator-Prefix.pch";
 				INFOPLIST_FILE = "CustomLocalisator/CustomLocalisator-Info.plist";
@@ -403,8 +425,6 @@
 		83D588B418C8727900CABB93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CustomLocalisator/CustomLocalisator-Prefix.pch";
 				INFOPLIST_FILE = "CustomLocalisator/CustomLocalisator-Info.plist";
@@ -416,7 +436,6 @@
 		83D588B618C8727900CABB93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CustomLocalisator.app/CustomLocalisator";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -439,7 +458,6 @@
 		83D588B718C8727900CABB93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CustomLocalisator.app/CustomLocalisator";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

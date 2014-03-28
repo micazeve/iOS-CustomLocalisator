@@ -59,40 +59,40 @@
     }
     else
     {
-        NSString * retour = self.dicoLocalisation[key];
-        if (retour == nil)
-        {
-            retour = key;
-        }
-        return retour;
+        NSString * localizedString = self.dicoLocalisation[key];
+        if (localizedString == nil)
+            localizedString = key;
+        return localizedString;
     }
 }
 
-
--(void)setLanguage:(NSString *)newLanguage
+-(BOOL)setLanguage:(NSString *)newLanguage
 {
-    if (newLanguage!= nil && ![newLanguage isEqualToString:self.currentLanguage] && [self.availableLanguagesArray containsObject:newLanguage])
+    if (newLanguage == nil || [newLanguage isEqualToString:self.currentLanguage] || ![self.availableLanguagesArray containsObject:newLanguage])
+        return NO;
+    
+    if ([newLanguage isEqualToString:@"DeviceLanguage"])
     {
-        if ([newLanguage isEqualToString:@"DeviceLanguage"])
+        self.currentLanguage = [newLanguage copy];
+        self.dicoLocalisation = nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLanguageChanged
+                                                            object:nil];
+        return YES;
+    }
+    else
+    {
+        NSURL * urlPath = [[NSBundle bundleForClass:[self class]] URLForResource:@"Localizable" withExtension:@"strings" subdirectory:nil localization:newLanguage];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:urlPath.path])
         {
             self.currentLanguage = [newLanguage copy];
-            self.dicoLocalisation = nil;
+            self.dicoLocalisation = [[NSDictionary dictionaryWithContentsOfFile:urlPath.path] copy];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLanguageChanged
                                                                 object:nil];
+            return YES;
         }
-        else
-        {
-            NSURL * urlPath = [[NSBundle bundleForClass:[self class]] URLForResource:@"Localizable" withExtension:@"strings" subdirectory:nil localization:newLanguage];
-            
-            if ([[NSFileManager defaultManager] fileExistsAtPath:urlPath.path])
-            {
-                self.currentLanguage = [newLanguage copy];
-                self.dicoLocalisation = [[NSDictionary dictionaryWithContentsOfFile:urlPath.path] copy];
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLanguageChanged
-                                                                    object:nil];
-            }
-        }
+        return NO;
     }
 }
 

@@ -1,28 +1,29 @@
 //
-//  TestViewController.m
+//  LocalisatorViewController.m
 //  CustomLocalisator
 //
 //  Created by Michael Azevedo on 06/03/2014.
 //
 //
 
-#import "TestViewController.h"
+#import "LocalisatorViewController.h"
 #import "Localisator.h"
 
-@interface TestViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *label1;
-@property (weak, nonatomic) IBOutlet UILabel *label2;
+@interface LocalisatorViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableViewLanguages;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewFlag;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelCurrentLanguage;
+@property (weak, nonatomic) IBOutlet UILabel *labelChooseLanguage;
 
 
-@property NSArray * arrayOfLangugages;
+
+@property NSArray * arrayOfLanguages;
 
 @end
 
-@implementation TestViewController
+@implementation LocalisatorViewController
 
 #pragma mark - Init methods
 
@@ -40,7 +41,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.arrayOfLangugages = [[[Localisator sharedInstance] availableLanguagesArray] copy];
+    self.arrayOfLanguages = [[[Localisator sharedInstance] availableLanguagesArray] copy];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveLanguageChangedNotification:)
@@ -51,8 +52,10 @@
 
 -(void)configureViewFromLocalisation
 {
-    [self.label1 setText:[[Localisator sharedInstance] localizedStringForKey:@"StringLabel1"]];
-    [self.label2 setText:[[Localisator sharedInstance] localizedStringForKey:@"StringLabel2"]];
+    self.title = LOCALIZATION(@"LocalisatorViewTitle");
+    
+    [self.labelCurrentLanguage setText:LOCALIZATION(@"LocalisatorViewCurrentLanguageText")];
+    [self.labelChooseLanguage setText:LOCALIZATION(@"LocalisatorViewTitle")];
     
     [self.tableViewLanguages reloadData];
 
@@ -73,10 +76,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.arrayOfLangugages == nil)
+    if (self.arrayOfLanguages == nil)
         return 0;
     
-    return [self.arrayOfLangugages count];
+    return [self.arrayOfLanguages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,8 +92,8 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
-    cell.imageView.image = [UIImage imageNamed:self.arrayOfLangugages[indexPath.row]];
-    cell.textLabel.text = [[Localisator sharedInstance] localizedStringForKey:self.arrayOfLangugages[indexPath.row]];
+    cell.imageView.image = [UIImage imageNamed:self.arrayOfLanguages[indexPath.row]];
+    cell.textLabel.text = LOCALIZATION(self.arrayOfLanguages[indexPath.row]);
     
     /* Now that the cell is configured we return it to the table view so that it can display it */
     
@@ -103,8 +106,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [[Localisator sharedInstance] setLanguage:self.arrayOfLangugages[indexPath.row]];
-    
+    if ([[Localisator sharedInstance] setLanguage:self.arrayOfLanguages[indexPath.row]])
+    {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:LOCALIZATION(@"languageChangedWarningMessage") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 
 #pragma mark - Memory management

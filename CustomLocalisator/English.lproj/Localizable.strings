@@ -1,7 +1,13 @@
-"StringLabel1"      = "This text is in english.";
-"StringLabel2"      = "This one too.";
-"StringButton"      = "Button title";
+"DeviceLanguage"                        = "iDevice Language";
+"English"                               = "English";
+"French"                                = "French";
 
-"DeviceLanguage"    = "iDevice Language";
-"English"           = "English";
-"French"            = "French";
+"HomeTitleText"                         = "Welcome";
+"HomeDescText"                          = "Localisator allow you to change your app language globally without having to restart it, and use the already existing Localizable strings.";
+"HomeButtonTitle"                       = "Choose language";
+
+"LocalisatorViewTitle"                  = "Choose your language :";
+"LocalisatorViewCurrentLanguageText"    = "Current language :";
+"LocalisatorViewTestText"               = "Test labels :";
+
+"languageChangedWarningMessage"         = "App language just changed !";

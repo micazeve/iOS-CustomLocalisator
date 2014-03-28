@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TestViewController.h"
+#import "HomeViewController.h"
 
 @implementation AppDelegate
 
@@ -19,9 +19,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     
-    TestViewController * viewController = [[TestViewController alloc] initWithNibName:@"TestView" bundle:nil];
-  
-    self.window.rootViewController = viewController;
+    HomeViewController * viewController = [[HomeViewController  alloc] initWithNibName:@"HomeView" bundle:nil];
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    [navController.navigationBar setTranslucent:NO];
+    self.window.rootViewController = navController;
     
     [self.window makeKeyAndVisible];
     return YES;
