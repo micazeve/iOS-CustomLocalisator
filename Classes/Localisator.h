@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#define LOCALIZATION(text) [[Localisator sharedInstance] localizedStringForKey:(text)]
 
 static NSString * const kNotificationLanguageChanged = @"kNotificationLanguageChanged";
 
@@ -16,10 +17,11 @@ static NSString * const kNotificationLanguageChanged = @"kNotificationLanguageCh
 @interface Localisator : NSObject
 
 @property (nonatomic, readonly) NSArray* availableLanguagesArray;
-
+@property (nonatomic, assign) BOOL saveInUserDefaults;
+@property NSString * currentLanguage;
 
 + (Localisator*)sharedInstance;
 -(NSString *)localizedStringForKey:(NSString*)key;
--(void)setLanguage:(NSString*)newLanguage;
+-(BOOL)setLanguage:(NSString*)newLanguage;
 
 @end
