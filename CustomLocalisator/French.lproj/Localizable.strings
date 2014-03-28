@@ -9,5 +9,6 @@
 "LocalisatorViewTitle"                  = "Choix de la langue";
 "LocalisatorViewCurrentLanguageText"    = "Langue actuelle :";
 "LocalisatorViewTestText"               = "Labels de test :";
+"LocalisatorViewSaveText"               = "Sauvegarder la langue :";
 
 "languageChangedWarningMessage"         = "La langue de l'application vient de changer !";

@@ -16,7 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelCurrentLanguage;
 @property (weak, nonatomic) IBOutlet UILabel *labelChooseLanguage;
+@property (weak, nonatomic) IBOutlet UILabel *labelSaveLanguage;
 
+@property (weak, nonatomic) IBOutlet UISwitch *switchSaveLanguage;
 
 
 @property NSArray * arrayOfLanguages;
@@ -47,6 +49,9 @@
                                              selector:@selector(receiveLanguageChangedNotification:)
                                                  name:kNotificationLanguageChanged
                                                object:nil];
+    
+    [self.switchSaveLanguage setOn:[[Localisator sharedInstance] saveInUserDefaults]];
+    
     [self configureViewFromLocalisation];
 }
 
@@ -54,14 +59,26 @@
 {
     self.title = LOCALIZATION(@"LocalisatorViewTitle");
     
-    [self.labelCurrentLanguage setText:LOCALIZATION(@"LocalisatorViewCurrentLanguageText")];
-    [self.labelChooseLanguage setText:LOCALIZATION(@"LocalisatorViewTitle")];
-    
-    [self.tableViewLanguages reloadData];
+    [self.labelCurrentLanguage  setText:LOCALIZATION(@"LocalisatorViewCurrentLanguageText")];
+    [self.labelChooseLanguage   setText:LOCALIZATION(@"LocalisatorViewTitle")];
+    [self.labelSaveLanguage     setText:LOCALIZATION(@"LocalisatorViewSaveText")];
+    [self.tableViewLanguages    reloadData];
 
     [self.imageViewFlag setImage:[UIImage imageNamed:[[Localisator sharedInstance] currentLanguage]]];
 
 }
+
+#pragma mark - Action methods
+
+- (IBAction)switchValueChanged:(UISwitch *)sender
+{
+    if (sender == self.switchSaveLanguage)
+    {
+        [[Localisator sharedInstance] setSaveInUserDefaults:self.switchSaveLanguage.isOn];
+    }
+}
+
+
 #pragma mark - Notification methods
 
 - (void) receiveLanguageChangedNotification:(NSNotification *) notification

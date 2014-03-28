@@ -8,10 +8,13 @@
 
 #import "Localisator.h"
 
+static NSString * const kSaveLanguageDefaultKey = @"kSaveLanguageDefaultKey";
+
 
 @interface Localisator()
 
 @property NSDictionary * dicoLocalisation;
+@property NSUserDefaults * defaults;
 
 @end
 
@@ -40,16 +43,61 @@
     self = [super init];
     if (self)
     {
-        _availableLanguagesArray    = @[@"DeviceLanguage", @"English", @"French"];
-        _currentLanguage             = @"DeviceLanguage";
-        _dicoLocalisation            = nil;
+        _defaults                       = [NSUserDefaults standardUserDefaults];
+        _availableLanguagesArray        = @[@"DeviceLanguage", @"English", @"French"];
+        _dicoLocalisation               = nil;
+        
+        _currentLanguage                = @"DeviceLanguage";
+        
+        NSString * languageSaved = [_defaults objectForKey:kSaveLanguageDefaultKey];
+        
+        if (languageSaved != nil && ![languageSaved isEqualToString:@"DeviceLanguage"])
+        {
+            [self loadDictionaryForLanguage:languageSaved];
+        }
     }
     return self;
 }
 
 
-#pragma mark - Instance methods
+#pragma mark - saveInIUserDefaults custom accesser/setter
 
+-(BOOL)saveInUserDefaults
+{
+    return ([self.defaults objectForKey:kSaveLanguageDefaultKey] != nil);
+}
+
+-(void)setSaveInUserDefaults:(BOOL)saveInUserDefaults
+{
+    if (saveInUserDefaults)
+    {
+        [self.defaults setObject:_currentLanguage forKey:kSaveLanguageDefaultKey];
+    }
+    else
+    {
+        [self.defaults removeObjectForKey:kSaveLanguageDefaultKey];
+    }
+    [self.defaults synchronize];
+}
+
+#pragma mark - Private  Instance methods
+
+-(BOOL)loadDictionaryForLanguage:(NSString *)newLanguage
+{
+    NSURL * urlPath = [[NSBundle bundleForClass:[self class]] URLForResource:@"Localizable" withExtension:@"strings" subdirectory:nil localization:newLanguage];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:urlPath.path])
+    {
+        self.currentLanguage = [newLanguage copy];
+        self.dicoLocalisation = [[NSDictionary dictionaryWithContentsOfFile:urlPath.path] copy];
+        
+        return YES;
+    }
+    return NO;
+}
+
+
+#pragma mark - Public Instance methods
 
 -(NSString *)localizedStringForKey:(NSString*)key
 {
@@ -81,18 +129,19 @@
     }
     else
     {
-        NSURL * urlPath = [[NSBundle bundleForClass:[self class]] URLForResource:@"Localizable" withExtension:@"strings" subdirectory:nil localization:newLanguage];
+        BOOL isLoadingOk = [self loadDictionaryForLanguage:newLanguage];
         
-        if ([[NSFileManager defaultManager] fileExistsAtPath:urlPath.path])
+        if (isLoadingOk)
         {
-            self.currentLanguage = [newLanguage copy];
-            self.dicoLocalisation = [[NSDictionary dictionaryWithContentsOfFile:urlPath.path] copy];
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLanguageChanged
                                                                 object:nil];
-            return YES;
+            if ([self saveInUserDefaults])
+            {
+                [self.defaults setObject:_currentLanguage forKey:kSaveLanguageDefaultKey];
+                [self.defaults synchronize];
+            }
         }
-        return NO;
+        return isLoadingOk;
     }
 }
 

@@ -17,6 +17,7 @@ static NSString * const kNotificationLanguageChanged = @"kNotificationLanguageCh
 @interface Localisator : NSObject
 
 @property (nonatomic, readonly) NSArray* availableLanguagesArray;
+@property (nonatomic, assign) BOOL saveInUserDefaults;
 @property NSString * currentLanguage;
 
 + (Localisator*)sharedInstance;
