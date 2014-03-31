@@ -3,7 +3,6 @@
 //  CustomLocalisator
 //
 //  Created by Michael Azevedo on 05/03/2014.
-//  Copyright (c) 2014 TEB. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
