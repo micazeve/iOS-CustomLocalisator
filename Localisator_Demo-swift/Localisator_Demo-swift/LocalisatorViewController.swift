@@ -25,8 +25,6 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("receiveLanguageChangedNotification:"), name: kNotificationLanguageChanged, object: nil)
         
         switchSaveLanguage.setOn(Localisator.sharedInstance.saveInUserDefaults, animated:false)
@@ -34,12 +32,10 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func configureViewFromLocalisation() {
-        
-        title = Localisator.sharedInstance.localizedStringForKey("LocalisatorViewTitle")
-        
-        labelCurrentLanguage.text       = Localisator.sharedInstance.localizedStringForKey("LocalisatorViewCurrentLanguageText")
-        labelChooseLanguage.text        = Localisator.sharedInstance.localizedStringForKey("LocalisatorViewTitle")
-        labelSaveLanguage.text          = Localisator.sharedInstance.localizedStringForKey("LocalisatorViewSaveText")
+        title                           = Localization("LocalisatorViewTitle")        
+        labelCurrentLanguage.text       = Localization("LocalisatorViewCurrentLanguageText")
+        labelChooseLanguage.text        = Localization("LocalisatorViewTitle")
+        labelSaveLanguage.text          = Localization("LocalisatorViewSaveText")
         tableViewLanguages.reloadData()
         imageViewFlag.image = UIImage(named:Localisator.sharedInstance.currentLanguage)
     }
@@ -74,7 +70,7 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
         }
         cell!.selectionStyle    = UITableViewCellSelectionStyle.Gray
         cell!.imageView.image   = UIImage(named:arrayLanguages[indexPath.row])
-        cell!.textLabel.text    = Localisator.sharedInstance.localizedStringForKey(arrayLanguages[indexPath.row])
+        cell!.textLabel.text    = Localization(arrayLanguages[indexPath.row])
         return cell!
     }
     
@@ -83,8 +79,8 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if Localisator.sharedInstance.setLanguage(arrayLanguages[indexPath.row]) {
-            let alert = UIAlertView(title: nil, message: Localisator.sharedInstance.localizedStringForKey("languageChangedWarningMessage"), delegate: nil, cancelButtonTitle: "OK")
+        if SetLanguage(arrayLanguages[indexPath.row]) {
+            let alert = UIAlertView(title: nil, message: Localization("languageChangedWarningMessage"), delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
     }

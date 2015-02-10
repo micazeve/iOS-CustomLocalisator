@@ -10,6 +10,13 @@ import UIKit
 
 let kNotificationLanguageChanged        = "kNotificationLanguageChanged";
 
+func Localization(string:String) -> String{
+    return Localisator.sharedInstance.localizedStringForKey(string)
+}
+
+func SetLanguage(language:String) -> Bool {
+    return Localisator.sharedInstance.setLanguage(language)
+}
 
 class Localisator {
    
@@ -60,6 +67,13 @@ class Localisator {
             }
         }
     }
+    
+    // MARK: - Public custom getter
+    
+    func getArrayAvailableLanguages() -> [String] {
+        return availableLanguagesArray
+    }
+    
  
     // MARK: - Private instance methods
     
@@ -79,9 +93,7 @@ class Localisator {
         return false
     }
     
-    // MARK: - Public instance methods
-    
-    func localizedStringForKey(key:String) -> String {
+    private func localizedStringForKey(key:String) -> String {
         
         if let dico = dicoLocalisation {
             if let localizedString = dico[key] as? String {
@@ -94,7 +106,7 @@ class Localisator {
         }
     }
     
-    func setLanguage(newLanguage:String) -> Bool {
+    private func setLanguage(newLanguage:String) -> Bool {
         
         if (newLanguage == currentLanguage) || !contains(availableLanguagesArray, newLanguage) {
             return false
@@ -114,10 +126,6 @@ class Localisator {
             return true
         }
         return false
-    }
-    
-    func getArrayAvailableLanguages() -> [String] {
-        return availableLanguagesArray
     }
 }
 

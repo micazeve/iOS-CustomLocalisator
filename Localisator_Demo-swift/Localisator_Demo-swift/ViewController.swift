@@ -32,9 +32,9 @@ class ViewController: UIViewController {
     
     func configureViewFromLocalisation() {
     
-        homeTitleLabel.text     = Localisator.sharedInstance.localizedStringForKey("HomeTitleText")
-        homeDescLabel.text      = Localisator.sharedInstance.localizedStringForKey("HomeDescText")
-        languageButton.setTitle(Localisator.sharedInstance.localizedStringForKey("HomeButtonTitle"), forState: UIControlState.Normal)
+        homeTitleLabel.text     = Localization("HomeTitleText")
+        homeDescLabel.text      = Localization("HomeDescText")
+        languageButton.setTitle(Localization("HomeButtonTitle"), forState: UIControlState.Normal)
         
     }
 

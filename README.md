@@ -2,6 +2,8 @@
 
 Localisator is a small class you can use in order to change languages from within your iOS app, without having to restart it. It’s compatible with the localizable.strings file, so you don’t have to duplicate all your localized strings.
 
+![Localisator](Screenshots/Screenshot1.png "Localisator")![Localisator](Screenshots/Screenshot2.png "Localisator")
+
 
 ###**Licence:**
 
