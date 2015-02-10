@@ -1,0 +1,14 @@
+"DeviceLanguage"                        = "iDevice Language";
+"English_en"                            = "English";
+"French_fr"                             = "French";
+
+"HomeTitleText"                         = "Welcome";
+"HomeDescText"                          = "Localisator allow you to change your app language globally without having to restart it, and use the already existing Localizable strings.";
+"HomeButtonTitle"                       = "Choose language";
+
+"LocalisatorViewTitle"                  = "Choose your language :";
+"LocalisatorViewCurrentLanguageText"    = "Current language :";
+"LocalisatorViewTestText"               = "Test labels :";
+"LocalisatorViewSaveText"               = "Save language :";
+
+"languageChangedWarningMessage"         = "App language just changed !";
