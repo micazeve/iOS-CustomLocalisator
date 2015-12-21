@@ -63,14 +63,14 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MyIdentifier") as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("MyIdentifier")
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyIdentifier")
         }
-        cell!.selectionStyle    = UITableViewCellSelectionStyle.Gray
-        cell!.imageView.image   = UIImage(named:arrayLanguages[indexPath.row])
-        cell!.textLabel.text    = Localization(arrayLanguages[indexPath.row])
+        cell!.selectionStyle        = UITableViewCellSelectionStyle.Gray
+        cell!.imageView?.image      = UIImage(named:arrayLanguages[indexPath.row])
+        cell!.textLabel?.text       = Localization(arrayLanguages[indexPath.row])
         return cell!
     }
     

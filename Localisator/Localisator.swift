@@ -108,7 +108,7 @@ class Localisator {
     
     private func setLanguage(newLanguage:String) -> Bool {
         
-        if (newLanguage == currentLanguage) || !contains(availableLanguagesArray, newLanguage) {
+        if (newLanguage == currentLanguage) || !availableLanguagesArray.contains(newLanguage) {
             return false
         }
         
