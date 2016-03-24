@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         title = "Localisator"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("receiveLanguageChangedNotification:"), name: kNotificationLanguageChanged, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.receiveLanguageChangedNotification(_:)), name: kNotificationLanguageChanged, object: nil)
         
         configureViewFromLocalisation()
     }

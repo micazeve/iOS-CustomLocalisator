@@ -25,7 +25,7 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("receiveLanguageChangedNotification:"), name: kNotificationLanguageChanged, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocalisatorViewController.receiveLanguageChangedNotification(_:)), name: kNotificationLanguageChanged, object: nil)
         
         switchSaveLanguage.setOn(Localisator.sharedInstance.saveInUserDefaults, animated:false)
         configureViewFromLocalisation()
