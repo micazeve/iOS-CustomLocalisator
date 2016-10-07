@@ -10,6 +10,8 @@ import UIKit
 
 class LocalisatorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+
+
      // MARK: - Outlets
     @IBOutlet var tableViewLanguages: UITableView!
     @IBOutlet var imageViewFlag: UIImageView!
@@ -25,7 +27,7 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocalisatorViewController.receiveLanguageChangedNotification(_:)), name: kNotificationLanguageChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LocalisatorViewController.receiveLanguageChangedNotification(notification:)), name: kNotificationLanguageChanged, object: nil)
         
         switchSaveLanguage.setOn(Localisator.sharedInstance.saveInUserDefaults, animated:false)
         configureViewFromLocalisation()
@@ -52,23 +54,24 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func switchValueChanged(sender: UISwitch) {
         if sender == switchSaveLanguage {
-            Localisator.sharedInstance.saveInUserDefaults = switchSaveLanguage.on
+            Localisator.sharedInstance.saveInUserDefaults = switchSaveLanguage.isOn
         }
     }
     
     // MARK: - UITableViewDataSource protocol conformance
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayLanguages.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MyIdentifier")
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "MyIdentifier")
         
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyIdentifier")
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "MyIdentifier")
         }
-        cell!.selectionStyle        = UITableViewCellSelectionStyle.Gray
+        cell!.selectionStyle        = UITableViewCellSelectionStyle.gray
         cell!.imageView?.image      = UIImage(named:arrayLanguages[indexPath.row])
         cell!.textLabel?.text       = Localization(arrayLanguages[indexPath.row])
         return cell!
@@ -76,8 +79,8 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - UITableViewDelegateprotocol conformance
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         
         if SetLanguage(arrayLanguages[indexPath.row]) {
             let alert = UIAlertView(title: nil, message: Localization("languageChangedWarningMessage"), delegate: nil, cancelButtonTitle: "OK")
@@ -88,7 +91,7 @@ class LocalisatorViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - Memory management
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationLanguageChanged, object: nil)
+        NotificationCenter.default.removeObserver(self, name: kNotificationLanguageChanged, object: nil)
     }
     
 }
