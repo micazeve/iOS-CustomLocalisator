@@ -8,13 +8,13 @@
 
 import UIKit
 
-let kNotificationLanguageChanged        = "kNotificationLanguageChanged";
+let kNotificationLanguageChanged        = NSNotification.Name(rawValue:"kNotificationLanguageChanged")
 
-func Localization(string:String) -> String{
+func Localization(_ string:String) -> String{
     return Localisator.sharedInstance.localizedStringForKey(string)
 }
 
-func SetLanguage(language:String) -> Bool {
+func SetLanguage(_ language:String) -> Bool {
     return Localisator.sharedInstance.setLanguage(language)
 }
 
@@ -22,7 +22,7 @@ class Localisator {
    
     // MARK: - Private properties
     
-    private let userDefaults                    = NSUserDefaults.standardUserDefaults()
+    private let userDefaults                    = UserDefaults.standard
     private var availableLanguagesArray         = ["DeviceLanguage", "English_en", "French_fr"]
     private var dicoLocalisation:NSDictionary!
     
@@ -37,13 +37,13 @@ class Localisator {
     
     var saveInUserDefaults:Bool {
         get {
-            return (userDefaults.objectForKey(kSaveLanguageDefaultKey) != nil)
+            return (userDefaults.object(forKey: kSaveLanguageDefaultKey) != nil)
         }
         set {
             if newValue {
-                userDefaults.setObject(currentLanguage, forKey: kSaveLanguageDefaultKey)
+                userDefaults.set(currentLanguage, forKey: kSaveLanguageDefaultKey)
             } else {
-                userDefaults.removeObjectForKey(kSaveLanguageDefaultKey)
+                userDefaults.removeObject(forKey: kSaveLanguageDefaultKey)
             }
             userDefaults.synchronize()
         }
@@ -61,9 +61,9 @@ class Localisator {
     
     // MARK: - Init method
     init() {          
-        if let languageSaved = userDefaults.objectForKey(kSaveLanguageDefaultKey) as? String {
+        if let languageSaved = userDefaults.object(forKey: kSaveLanguageDefaultKey) as? String {
             if languageSaved != "DeviceLanguage" {
-                self.loadDictionaryForLanguage(languageSaved)
+                _ = self.loadDictionaryForLanguage(languageSaved)
             }
         }
     }
@@ -77,13 +77,13 @@ class Localisator {
  
     // MARK: - Private instance methods
     
-    private func loadDictionaryForLanguage(newLanguage:String) -> Bool {
+    fileprivate func loadDictionaryForLanguage(_ newLanguage:String) -> Bool {
         
-        let arrayExt = newLanguage.componentsSeparatedByString("_")
+        let arrayExt = newLanguage.components(separatedBy: "_")
         
         for ext in arrayExt {
-            if let path = NSBundle(forClass:object_getClass(self)).URLForResource("Localizable", withExtension: "strings", subdirectory: nil, localization: ext)?.path {
-                if NSFileManager.defaultManager().fileExistsAtPath(path) {
+            if let path = Bundle(for:object_getClass(self)).url(forResource: "Localizable", withExtension: "strings", subdirectory: nil, localization: ext)?.path {
+                if FileManager.default.fileExists(atPath: path) {
                     currentLanguage = newLanguage
                     dicoLocalisation = NSDictionary(contentsOfFile: path)
                     return true
@@ -93,7 +93,7 @@ class Localisator {
         return false
     }
     
-    private func localizedStringForKey(key:String) -> String {
+    fileprivate func localizedStringForKey(_ key:String) -> String {
         
         if let dico = dicoLocalisation {
             if let localizedString = dico[key] as? String {
@@ -106,7 +106,7 @@ class Localisator {
         }
     }
     
-    private func setLanguage(newLanguage:String) -> Bool {
+    fileprivate func setLanguage(_ newLanguage:String) -> Bool {
         
         if (newLanguage == currentLanguage) || !availableLanguagesArray.contains(newLanguage) {
             return false
@@ -115,12 +115,12 @@ class Localisator {
         if newLanguage == "DeviceLanguage" {
             currentLanguage = newLanguage
             dicoLocalisation = nil
-            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationLanguageChanged, object: nil)
+            NotificationCenter.default.post(name: kNotificationLanguageChanged, object: nil)
             return true
         } else if loadDictionaryForLanguage(newLanguage) {
-            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationLanguageChanged, object: nil)
+            NotificationCenter.default.post(name: kNotificationLanguageChanged, object: nil)
             if saveInUserDefaults {
-                userDefaults.setObject(currentLanguage, forKey: kSaveLanguageDefaultKey)
+                userDefaults.set(currentLanguage, forKey: kSaveLanguageDefaultKey)
                 userDefaults.synchronize()
             }
             return true

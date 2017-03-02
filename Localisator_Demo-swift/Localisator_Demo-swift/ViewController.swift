@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         title = "Localisator"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.receiveLanguageChangedNotification(_:)), name: kNotificationLanguageChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receiveLanguageChangedNotification(notification:)), name: kNotificationLanguageChanged, object: nil)
         
         configureViewFromLocalisation()
     }
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     
         homeTitleLabel.text     = Localization("HomeTitleText")
         homeDescLabel.text      = Localization("HomeDescText")
-        languageButton.setTitle(Localization("HomeButtonTitle"), forState: UIControlState.Normal)
+        languageButton.setTitle(Localization("HomeButtonTitle"), for: UIControlState.normal)
         
     }
 
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     // MARK: - Memory management
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kNotificationLanguageChanged, object: nil)
+        NotificationCenter.default.removeObserver(self, name: kNotificationLanguageChanged, object: nil)
     }
 
 }
