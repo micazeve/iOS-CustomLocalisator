@@ -115,6 +115,7 @@ class Localisator {
         if newLanguage == "DeviceLanguage" {
             currentLanguage = newLanguage
             dicoLocalisation = nil
+            userDefaults.removeObject(forKey: kSaveLanguageDefaultKey)
             NotificationCenter.default.post(name: kNotificationLanguageChanged, object: nil)
             return true
         } else if loadDictionaryForLanguage(newLanguage) {
